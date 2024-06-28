@@ -4,3 +4,4 @@ export 'authentication/forgot_password/forgot_password_bloc.dart';
 export 'authentication/login/login_bloc.dart';
 export 'authentication/send_verification_email/send_verification_email_bloc.dart';
 export 'authentication/logout/logout_bloc.dart';
+export 'user/user_bloc.dart';

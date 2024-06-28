@@ -6,6 +6,7 @@ import '../constant/color.dart';
 extension BuildContextExt on BuildContext {
   double get fullHeight => MediaQuery.of(this).size.height;
   double get fullWidth => MediaQuery.of(this).size.width;
+  double get paddingAppBar => MediaQuery.of(this).viewPadding.top;
 
   showSnackbar(String message) {
     ScaffoldMessenger.of(this)

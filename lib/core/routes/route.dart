@@ -1,4 +1,7 @@
 import 'package:go_router/go_router.dart';
+import 'package:nonton_id/presentation/pages/change_password_page/change_password_page.dart';
+import 'package:nonton_id/presentation/pages/my_wallet_page/my_wallet_page.dart';
+import 'package:nonton_id/presentation/pages/update_profile_page/update_profile_page.dart';
 
 import '../../presentation/pages/forgot_password_page/forgot_password_page.dart';
 import '../../presentation/pages/home_page/home_page.dart';
@@ -35,6 +38,23 @@ final _router = GoRouter(
       path: '/home',
       name: 'home',
       builder: (context, state) => const HomePage(),
+      routes: [
+        GoRoute(
+          path: 'update-profile',
+          name: 'update-profile',
+          builder: (context, state) => const UpdateProfilePage(),
+        ),
+        GoRoute(
+          path: 'my-wallet',
+          name: 'my-wallet',
+          builder: (context, state) => const MyWalletPage(),
+        ),
+        GoRoute(
+          path: 'change-password',
+          name: 'change-password',
+          builder: (context, state) => const ChangePasswordPage(),
+        ),
+      ],
     ),
   ],
 );

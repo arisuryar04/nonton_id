@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 import 'core/constant/color.dart';
 import 'core/routes/route.dart';
@@ -13,7 +14,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   injection();
-  runApp(const MyApp());
+  initializeDateFormatting('id_ID', null).then((_) => runApp(const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -28,9 +29,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => locator<LogoutBloc>()),
         BlocProvider(create: (context) => locator<RegisterBloc>()),
         BlocProvider(create: (context) => locator<SendVerificationEmailBloc>()),
+        BlocProvider(create: (context) => locator<UserBloc>()),
       ],
       child: MaterialApp.router(
         title: 'Flutter Demo',
+        locale: const Locale('id', 'ID'),
         theme: ThemeData(
           fontFamily: 'Poppins',
           colorScheme: ColorScheme.fromSeed(seedColor: primary),
