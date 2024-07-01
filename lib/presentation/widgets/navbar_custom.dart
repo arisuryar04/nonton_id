@@ -27,7 +27,7 @@ class NavbarCustom extends StatelessWidget {
         width: context.fullWidth,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: greyDark.withOpacity(0.5),
+          color: greyDark,
         ),
         child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:nonton_id/presentation/pages/change_password_page/change_password_page.dart';
+import 'package:nonton_id/presentation/pages/movie_detail_page/movie_detail_page.dart';
 import 'package:nonton_id/presentation/pages/my_wallet_page/my_wallet_page.dart';
 import 'package:nonton_id/presentation/pages/update_profile_page/update_profile_page.dart';
 
@@ -53,6 +54,13 @@ final _router = GoRouter(
           path: 'change-password',
           name: 'change-password',
           builder: (context, state) => const ChangePasswordPage(),
+        ),
+        GoRoute(
+          path: 'movie-detail',
+          name: 'movie-detail',
+          builder: (context, state) => MovieDetailPage(
+            isUpComing: state.extra as bool,
+          ),
         ),
       ],
     ),

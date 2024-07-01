@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:nonton_id/presentation/bloc/bloc.dart';
 
 import '../../../core/constant/assets.dart';
 import '../../../core/constant/color.dart';
+import '../../bloc/bloc.dart';
 import '../../widgets/navbar_custom.dart';
+import '../favorite_movie_page/favorite_movie_page.dart';
+import '../movie_page/movie_page.dart';
 import '../user_page/user_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,23 +22,13 @@ class _HomePageState extends State<HomePage> {
       'title': 'Home',
       'icon': Assets.home,
       'selected': Assets.homeSelected,
-      'page': const Center(
-        child: Text(
-          'Movie',
-          style: TextStyle(color: white),
-        ),
-      ),
+      'page': const MoviePage(),
     },
     {
       'title': 'Favorite',
       'icon': Assets.watchlist,
       'selected': Assets.watchlistSelected,
-      'page': const Center(
-        child: Text(
-          'Favorite',
-          style: TextStyle(color: white),
-        ),
-      ),
+      'page': const FavoriteMoviePage(),
     },
     {
       'title': 'Ticket',
@@ -61,6 +53,8 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     final uid = context.read<LoginBloc>().state.uid;
     context.read<UserBloc>().add(OnGetUser(uid!));
+    context.read<MovieBloc>().add(OnGetMovie());
+    context.read<MovieBloc>().add(OnGetFavoriteMovie());
     super.initState();
   }
 

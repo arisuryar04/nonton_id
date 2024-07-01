@@ -6,6 +6,7 @@ Widget infoItemUser({required String label, void Function()? onTap}) {
   return GestureDetector(
     onTap: onTap,
     child: Container(
+      color: Colors.transparent,
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
       margin: const EdgeInsets.only(top: 5),
       child: Row(

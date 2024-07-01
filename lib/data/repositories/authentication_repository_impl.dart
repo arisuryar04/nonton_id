@@ -3,7 +3,7 @@ import 'package:nonton_id/core/error/exception.dart';
 
 import '../../core/error/failure.dart';
 import '../../domain/repositories/repository.dart';
-import '../datasource/remote_data_source.dart';
+import '../datasource/data_source.dart';
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository {
   final AuthenticationRemoteDataSource _remoteDataSource;

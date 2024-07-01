@@ -2,9 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
-import 'package:nonton_id/domain/usecases/user/change_password_use_case.dart';
+import 'package:http/http.dart' as http;
 
-import 'data/datasource/remote_data_source.dart';
+import 'core/db/db_helper.dart';
+import 'data/datasource/data_source.dart';
 import 'data/repositories/repository_impl.dart';
 import 'domain/repositories/repository.dart';
 import 'domain/usecases/usecases.dart';
@@ -23,8 +24,14 @@ void injection() {
   locator.registerFactory(() => RegisterBloc(locator(), locator()));
   locator.registerFactory(() => ForgotPasswordBloc(locator()));
   locator.registerFactory(() => SendVerificationEmailBloc(locator()));
-  locator.registerFactory(() => UserBloc(
-      locator(), locator(), locator(), locator(), locator(), locator()));
+  locator.registerFactory(
+    () => UserBloc(
+        locator(), locator(), locator(), locator(), locator(), locator()),
+  );
+  locator.registerFactory(
+    () => MovieBloc(locator(), locator(), locator(), locator(), locator(),
+        locator(), locator()),
+  );
 
   // Usecases
   locator.registerLazySingleton(() => GetLoggedUserUseCase(locator()));
@@ -40,21 +47,36 @@ void injection() {
   locator.registerLazySingleton(() => UpdateProfileUserUseCase(locator()));
   locator.registerLazySingleton(() => UploadProfilePictureUseCase(locator()));
   locator.registerLazySingleton(() => ChangePasswordUseCase(locator()));
+  locator.registerLazySingleton(() => GetNowPlayingMovieUseCase(locator()));
+  locator.registerLazySingleton(() => GetUpComingMovieUseCase(locator()));
+  locator.registerLazySingleton(() => GetCreditsMovieUseCase(locator()));
+  locator.registerLazySingleton(() => GetMovieDetailUseCase(locator()));
+  locator.registerLazySingleton(() => GetFavoriteMovieUseCase(locator()));
+  locator.registerLazySingleton(() => RemoveFavoriteMovieUseCase(locator()));
+  locator.registerLazySingleton(() => SaveFavoriteMovieUseCase(locator()));
 
   // Repository
   locator.registerLazySingleton<AuthenticationRepository>(
       () => AuthenticationRepositoryImpl(locator()));
   locator.registerLazySingleton<UserRepository>(
       () => UserRepositoryImpl(locator()));
+  locator.registerLazySingleton<MovieRepository>(
+      () => MovieRepositoryImpl(locator(), locator()));
 
   // Datasource
   locator.registerLazySingleton<AuthenticationRemoteDataSource>(
       () => AuthenticationRemoteDataSourceImpl(locator(), locator()));
   locator.registerLazySingleton<UserRemoteDataSource>(
       () => UserRemoteDataSourceImpl(locator(), locator(), locator()));
+  locator.registerLazySingleton<MovieRemoteDataSource>(
+      () => MovieRemoteDataSourceImpl(locator()));
+  locator.registerLazySingleton<MovieLocalDataSource>(
+      () => MovieLocalDataSourceImpl(locator()));
 
   // External
   locator.registerLazySingleton(() => firebaseAuth);
   locator.registerLazySingleton(() => firestore);
   locator.registerLazySingleton(() => firebaseStorage);
+  locator.registerLazySingleton(() => http.Client());
+  locator.registerLazySingleton(() => DbHelper.instance);
 }

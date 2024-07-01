@@ -9,4 +9,6 @@ class Assets {
   static const watchlistSelected = 'assets/images/watchlist-selected.png';
   static const profilePlaceholder = 'assets/images/pp-placeholder.png';
   static const wallet = 'assets/images/wallet.png';
+  static const errorImage = 'assets/images/no-image.png';
+  static const promotions = 'assets/images/promotions.png';
 }

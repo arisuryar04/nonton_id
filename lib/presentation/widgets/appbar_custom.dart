@@ -27,12 +27,17 @@ class AppBarCustom extends StatelessWidget {
               color: white,
             ),
           ),
-          Text(
-            title,
-            style: const TextStyle(
-              color: white,
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
+          SizedBox(
+            width: context.fullWidth / 1.75,
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              style: const TextStyle(
+                color: white,
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
           rightChild ?? const SizedBox(),

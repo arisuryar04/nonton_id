@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => locator<RegisterBloc>()),
         BlocProvider(create: (context) => locator<SendVerificationEmailBloc>()),
         BlocProvider(create: (context) => locator<UserBloc>()),
+        BlocProvider(create: (context) => locator<MovieBloc>()),
       ],
       child: MaterialApp.router(
         title: 'Flutter Demo',
