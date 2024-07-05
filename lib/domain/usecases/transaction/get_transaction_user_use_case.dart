@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../core/error/failure.dart';
-import '../../entities/transaction.dart';
+import '../../entities/entities.dart';
 import '../../repositories/repository.dart';
 
 class GetTransactionUserUseCase {

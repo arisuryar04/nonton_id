@@ -1,9 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:intl/intl.dart';
 
-import '../../../domain/entities/credits.dart';
-import '../../../domain/entities/movie.dart';
-import '../../../domain/entities/movie_detail.dart';
+import '../../../domain/entities/entities.dart';
 import '../../../domain/usecases/usecases.dart';
 import '../bloc.dart';
 

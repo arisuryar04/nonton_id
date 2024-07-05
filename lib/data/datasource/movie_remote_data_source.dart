@@ -4,9 +4,7 @@ import 'package:http/http.dart' as http;
 
 import '../../core/constant/config.dart';
 import '../../core/error/exception.dart';
-import '../model/credits_model.dart';
-import '../model/movie_detail_model.dart';
-import '../model/movie_model.dart';
+import '../model/model.dart';
 
 abstract class MovieRemoteDataSource {
   Future<List<MovieModel>> fetchNowPlayingMovie({int page = 1});

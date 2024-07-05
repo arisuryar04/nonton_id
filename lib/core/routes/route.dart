@@ -1,17 +1,7 @@
 import 'package:go_router/go_router.dart';
 
 import '../../domain/entities/transaction.dart';
-import '../../presentation/pages/change_password_page/change_password_page.dart';
-import '../../presentation/pages/forgot_password_page/forgot_password_page.dart';
-import '../../presentation/pages/home_page/home_page.dart';
-import '../../presentation/pages/login_page/login_page.dart';
-import '../../presentation/pages/movie_detail_page/movie_detail_page.dart';
-import '../../presentation/pages/my_wallet_page/my_wallet_page.dart';
-import '../../presentation/pages/order_summary_page/order_summary_page.dart';
-import '../../presentation/pages/register_page/register_page.dart';
-import '../../presentation/pages/seats_page/seats_page.dart';
-import '../../presentation/pages/splash_page/splash_page.dart';
-import '../../presentation/pages/update_profile_page/update_profile_page.dart';
+import '../../presentation/pages/pages.dart';
 
 GoRouter get router => _router;
 

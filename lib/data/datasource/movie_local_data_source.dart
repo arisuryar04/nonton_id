@@ -1,6 +1,5 @@
-import 'package:nonton_id/core/db/db_helper.dart';
-
-import '../model/movie_model.dart';
+import '../../core/db/db_helper.dart';
+import '../model/model.dart';
 
 abstract class MovieLocalDataSource {
   Future<List<MovieModel>> fetchFavoriteMovie();

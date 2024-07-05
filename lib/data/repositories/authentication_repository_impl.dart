@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:nonton_id/core/error/exception.dart';
 
+import '../../core/error/exception.dart';
 import '../../core/error/failure.dart';
 import '../../domain/repositories/repository.dart';
 import '../datasource/data_source.dart';

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../core/error/exception.dart';
-import '../model/transaction_model.dart';
+import '../model/model.dart';
 
 abstract class TransactionRemoteDataSource {
   Future<TransactionModel> createTransaction({

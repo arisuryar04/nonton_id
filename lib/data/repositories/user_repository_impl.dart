@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 
 import '../../core/error/failure.dart';
-import '../../domain/entities/user.dart';
+import '../../domain/entities/entities.dart';
 import '../../domain/repositories/repository.dart';
 import '../datasource/user_remote_data_source.dart';
-import '../model/user_model.dart';
+import '../model/model.dart';
 
 class UserRepositoryImpl implements UserRepository {
   final UserRemoteDataSource _remoteDataSource;

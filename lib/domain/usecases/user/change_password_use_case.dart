@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../core/error/failure.dart';
-import '../../repositories/user_repository.dart';
+import '../../repositories/repository.dart';
 
 class ChangePasswordUseCase {
   final UserRepository _repository;

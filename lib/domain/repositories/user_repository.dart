@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:nonton_id/domain/entities/user.dart';
 
 import '../../core/error/failure.dart';
+import '../entities/entities.dart';
 
 abstract class UserRepository {
   Future<Either<Failure, User>> getUser({required String uid});

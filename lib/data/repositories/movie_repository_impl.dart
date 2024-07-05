@@ -2,12 +2,10 @@ import 'package:dartz/dartz.dart';
 
 import '../../core/error/exception.dart';
 import '../../core/error/failure.dart';
-import '../../domain/entities/credits.dart';
-import '../../domain/entities/movie.dart';
-import '../../domain/entities/movie_detail.dart';
+import '../../domain/entities/entities.dart';
 import '../../domain/repositories/repository.dart';
 import '../datasource/data_source.dart';
-import '../model/movie_model.dart';
+import '../model/model.dart';
 
 class MovieRepositoryImpl implements MovieRepository {
   final MovieRemoteDataSource _remoteDataSource;

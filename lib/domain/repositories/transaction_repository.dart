@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../core/error/failure.dart';
-import '../entities/transaction.dart';
+import '../entities/entities.dart';
 
 abstract class TransactionRepository {
   Future<Either<Failure, Transaction>> createTransaction({

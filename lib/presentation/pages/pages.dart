@@ -1,0 +1,15 @@
+export 'change_password_page/change_password_page.dart';
+export 'favorite_movie_page/favorite_movie_page.dart';
+export 'forgot_password_page/forgot_password_page.dart';
+export 'home_page/home_page.dart';
+export 'login_page/login_page.dart';
+export 'movie_detail_page/movie_detail_page.dart';
+export 'movie_page/movie_page.dart';
+export 'my_wallet_page/my_wallet_page.dart';
+export 'order_summary_page/order_summary_page.dart';
+export 'register_page/register_page.dart';
+export 'seats_page/seats_page.dart';
+export 'splash_page/splash_page.dart';
+export 'ticket_page/ticket_page.dart';
+export 'update_profile_page/update_profile_page.dart';
+export 'user_page/user_page.dart';

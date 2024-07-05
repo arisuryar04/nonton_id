@@ -1,4 +1,4 @@
-import 'package:nonton_id/domain/repositories/repository.dart';
+import '../../repositories/repository.dart';
 
 class GetLoggedUserUseCase {
   final AuthenticationRepository _repository;

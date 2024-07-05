@@ -1,9 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../core/error/failure.dart';
-import '../entities/credits.dart';
-import '../entities/movie.dart';
-import '../entities/movie_detail.dart';
+import '../entities/entities.dart';
 
 abstract class MovieRepository {
   Future<Either<Failure, List<Movie>>> getNowPlayingMovie({int page = 1});

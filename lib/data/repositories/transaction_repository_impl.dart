@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 
 import '../../core/error/failure.dart';
-import '../../domain/entities/transaction.dart';
+import '../../domain/entities/entities.dart';
 import '../../domain/repositories/repository.dart';
 import '../datasource/data_source.dart';
-import '../model/transaction_model.dart';
+import '../model/model.dart';
 
 class TransactionRepositoryImpl implements TransactionRepository {
   final TransactionRemoteDataSource _remoteDataSource;
