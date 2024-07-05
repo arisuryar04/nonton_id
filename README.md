@@ -47,32 +47,32 @@ Pastikan sudah menginstall Git dan Flutter pada environment kalian.
 
 
 ## Detail Aplikasi Nonton ID
-![login](assets/screenshot/login.png)
+<img src="assets/screenshot/login.png" width="256">&nbsp;&nbsp;
 
-![register](assets/screenshot/register.png)
+<img src="assets/screenshot/register.png" width="256">&nbsp;&nbsp;
 
-![forgot-password](assets/screenshot/forgot-password.png)
+<img src="assets/screenshot/forgot-password.png" width="256">&nbsp;&nbsp;
 
-![home](assets/screenshot/home.png)
+<img src="assets/screenshot/home.png" width="256">&nbsp;&nbsp;
 
-![movie-detail-schedule](assets/screenshot/movie-detail-schedule.png)
+<img src="assets/screenshot/movie-detail-schedule.png" width="256">&nbsp;&nbsp;
 
-![movie-detail-info](assets/screenshot/movie-detail-info.png)
+<img src="assets/screenshot/movie-detail-info.png" width="256">&nbsp;&nbsp;
 
-![seat](assets/screenshot/seat.png)
+<img src="assets/screenshot/seat.png" width="256">&nbsp;&nbsp;
 
-![summary](assets/screenshot/summary.png)
+<img src="assets/screenshot/summary.png" width="256">&nbsp;&nbsp;
 
-![order-success](assets/screenshot/order-success.png)
+<img src="assets/screenshot/order-success.png" width="256">&nbsp;&nbsp;
 
-![favorite](assets/screenshot/favorite.png)
+<img src="assets/screenshot/favorite.png" width="256">&nbsp;&nbsp;
 
-![ticket](assets/screenshot/ticket.png)
+<img src="assets/screenshot/ticket.png" width="256">&nbsp;&nbsp;
 
-![user](assets/screenshot/user.png)
+<img src="assets/screenshot/user.png" width="256">&nbsp;&nbsp;
 
-![update-profile](assets/screenshot/update-profile.png)
+<img src="assets/screenshot/update-profile.png" width="256">&nbsp;&nbsp;
 
-![wallet](assets/screenshot/wallet.png)
+<img src="assets/screenshot/wallet.png" width="256">&nbsp;&nbsp;
 
-![change-password](assets/screenshot/change-password.png)
+<img src="assets/screenshot/change-password.png" width="256" >&nbsp;&nbsp;
