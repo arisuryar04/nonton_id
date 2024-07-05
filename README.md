@@ -48,31 +48,21 @@ Pastikan sudah menginstall Git dan Flutter pada environment kalian.
 
 ## Detail Aplikasi Nonton ID
 <img src="assets/screenshot/login.png" width="256">&nbsp;&nbsp;
-
 <img src="assets/screenshot/register.png" width="256">&nbsp;&nbsp;
-
 <img src="assets/screenshot/forgot-password.png" width="256">&nbsp;&nbsp;
 
 <img src="assets/screenshot/home.png" width="256">&nbsp;&nbsp;
-
 <img src="assets/screenshot/movie-detail-schedule.png" width="256">&nbsp;&nbsp;
-
 <img src="assets/screenshot/movie-detail-info.png" width="256">&nbsp;&nbsp;
 
 <img src="assets/screenshot/seat.png" width="256">&nbsp;&nbsp;
-
 <img src="assets/screenshot/summary.png" width="256">&nbsp;&nbsp;
-
 <img src="assets/screenshot/order-success.png" width="256">&nbsp;&nbsp;
 
 <img src="assets/screenshot/favorite.png" width="256">&nbsp;&nbsp;
-
 <img src="assets/screenshot/ticket.png" width="256">&nbsp;&nbsp;
-
 <img src="assets/screenshot/user.png" width="256">&nbsp;&nbsp;
 
 <img src="assets/screenshot/update-profile.png" width="256">&nbsp;&nbsp;
-
 <img src="assets/screenshot/wallet.png" width="256">&nbsp;&nbsp;
-
 <img src="assets/screenshot/change-password.png" width="256" >&nbsp;&nbsp;
