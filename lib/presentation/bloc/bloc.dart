@@ -6,3 +6,4 @@ export 'authentication/send_verification_email/send_verification_email_bloc.dart
 export 'authentication/logout/logout_bloc.dart';
 export 'user/user_bloc.dart';
 export 'movie/movie_bloc.dart';
+export 'transaction/transaction_bloc.dart';

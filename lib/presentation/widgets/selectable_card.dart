@@ -25,7 +25,7 @@ class SelectableCard extends StatelessWidget {
       onTap: isEnabled == false ? null : onTap,
       child: Container(
         padding: const EdgeInsets.all(5),
-        margin: const EdgeInsets.only(right: 12),
+        // margin: const EdgeInsets.only(right: 12),
         height: height,
         width: width,
         alignment: Alignment.center,

@@ -14,7 +14,9 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   injection();
-  initializeDateFormatting('id_ID', null).then((_) => runApp(const MyApp()));
+  initializeDateFormatting('id_ID', null).then(
+    (_) => runApp(const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -31,6 +33,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => locator<SendVerificationEmailBloc>()),
         BlocProvider(create: (context) => locator<UserBloc>()),
         BlocProvider(create: (context) => locator<MovieBloc>()),
+        BlocProvider(create: (context) => locator<TransactionBloc>()),
       ],
       child: MaterialApp.router(
         title: 'Flutter Demo',

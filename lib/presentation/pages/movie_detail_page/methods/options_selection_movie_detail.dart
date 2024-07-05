@@ -47,6 +47,7 @@ class OptionSelection<T> extends StatelessWidget {
           isScrolable == false
               ? Wrap(
                   runSpacing: 8,
+                  spacing: 12,
                   children: options!.map((e) {
                     return SelectableCard(
                       isEnabled: isEnabled != null ? isEnabled!(e) : true,
@@ -62,13 +63,16 @@ class OptionSelection<T> extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: options!.map((e) {
-                      return SelectableCard(
-                        isEnabled: isEnabled != null ? isEnabled!(e) : true,
-                        title: converter != null ? converter!.call(e) : '$e',
-                        height: height,
-                        width: width,
-                        isSelected: selected == e,
-                        onTap: () => onTap?.call(e),
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 12),
+                        child: SelectableCard(
+                          isEnabled: isEnabled != null ? isEnabled!(e) : true,
+                          title: converter != null ? converter!.call(e) : '$e',
+                          height: height,
+                          width: width,
+                          isSelected: selected == e,
+                          onTap: () => onTap?.call(e),
+                        ),
                       );
                     }).toList(),
                   ),

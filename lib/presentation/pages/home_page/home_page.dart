@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constant/assets.dart';
-import '../../../core/constant/color.dart';
 import '../../bloc/bloc.dart';
 import '../../widgets/navbar_custom.dart';
 import '../favorite_movie_page/favorite_movie_page.dart';
 import '../movie_page/movie_page.dart';
+import '../ticket_page/ticket_page.dart';
 import '../user_page/user_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -34,12 +34,7 @@ class _HomePageState extends State<HomePage> {
       'title': 'Ticket',
       'icon': Assets.ticket,
       'selected': Assets.ticketSelected,
-      'page': const Center(
-        child: Text(
-          'Ticket',
-          style: TextStyle(color: white),
-        ),
-      ),
+      'page': const TicketPage(),
     },
     {
       'title': 'Akun',
@@ -55,6 +50,8 @@ class _HomePageState extends State<HomePage> {
     context.read<UserBloc>().add(OnGetUser(uid!));
     context.read<MovieBloc>().add(OnGetMovie());
     context.read<MovieBloc>().add(OnGetFavoriteMovie());
+    context.read<TransactionBloc>().add(OnGetTransactionUser(uid));
+
     super.initState();
   }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../../presentation/widgets/widgets.dart';
 import '../constant/color.dart';
@@ -14,6 +15,30 @@ extension BuildContextExt on BuildContext {
       ..showSnackBar(
         SnackBar(content: Text(message)),
       );
+  }
+
+  customDialog({
+    required List<Widget> children,
+  }) {
+    showDialog(
+      context: this,
+      barrierDismissible: false,
+      builder: (context) {
+        return Dialog(
+          backgroundColor: greyDark,
+          alignment: Alignment.center,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: children,
+            ),
+          ),
+        );
+      },
+    );
   }
 
   showDialogVerification({

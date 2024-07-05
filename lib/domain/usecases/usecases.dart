@@ -18,3 +18,5 @@ export 'movie/get_up_coming_movie_use_case.dart';
 export 'movie/get_favorite_movie_use_case.dart';
 export 'movie/remove_favorite_movie_use_case.dart';
 export 'movie/save_favorite_movie_use_case.dart';
+export 'transaction/create_transaction_use_case.dart';
+export 'transaction/get_transaction_user_use_case.dart';

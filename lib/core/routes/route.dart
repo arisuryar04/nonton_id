@@ -1,7 +1,10 @@
 import 'package:go_router/go_router.dart';
+import 'package:nonton_id/domain/entities/transaction.dart';
 import 'package:nonton_id/presentation/pages/change_password_page/change_password_page.dart';
 import 'package:nonton_id/presentation/pages/movie_detail_page/movie_detail_page.dart';
 import 'package:nonton_id/presentation/pages/my_wallet_page/my_wallet_page.dart';
+import 'package:nonton_id/presentation/pages/order_summary/order_summary_page.dart';
+import 'package:nonton_id/presentation/pages/seats_page/seats_page.dart';
 import 'package:nonton_id/presentation/pages/update_profile_page/update_profile_page.dart';
 
 import '../../presentation/pages/forgot_password_page/forgot_password_page.dart';
@@ -61,6 +64,24 @@ final _router = GoRouter(
           builder: (context, state) => MovieDetailPage(
             isUpComing: state.extra as bool,
           ),
+          routes: [
+            GoRoute(
+              path: 'seats',
+              name: 'seats',
+              builder: (context, state) => SeatsPage(
+                transaction: state.extra as Transaction,
+              ),
+              routes: [
+                GoRoute(
+                  path: 'order-summary',
+                  name: 'order-summary',
+                  builder: (context, state) => OrderSummaryPage(
+                    transaction: state.extra as Transaction,
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ],
     ),

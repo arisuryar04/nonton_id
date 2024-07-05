@@ -53,7 +53,7 @@ class MoviePage extends StatelessWidget {
                   movies: state.upComing,
                   isUpComing: true,
                 ),
-                verticalSpace(120),
+                verticalSpace(110),
               ],
             ),
           );

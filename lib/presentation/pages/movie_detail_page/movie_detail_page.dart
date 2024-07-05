@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
+import 'package:nonton_id/domain/entities/movie_detail.dart';
+import 'package:nonton_id/domain/entities/transaction.dart';
 
 import '../../../core/constant/color.dart';
 import '../../../core/constant/config.dart';
@@ -41,7 +44,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   ];
   String? selectedTheater;
 
-  List<int> time = List.generate(10, (index) => index + 5);
+  List<int> time = List.generate(10, (index) => index + 10);
   int? selectedTime;
 
   @override
@@ -199,7 +202,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                         ? TabBarView(
                             physics: const NeverScrollableScrollPhysics(),
                             children: [
-                              _sectionSchedule(context),
+                              _sectionSchedule(context, state.movieDetail!),
                               sectionInfo(state, state.actor!),
                             ],
                           )
@@ -215,7 +218,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     );
   }
 
-  Widget _sectionSchedule(BuildContext context) {
+  Widget _sectionSchedule(BuildContext context, MovieDetail movie) {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -278,7 +281,19 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                       selectedDate == null ||
                       selectedTime == null
                   ? null
-                  : () {},
+                  : () => context.pushNamed(
+                        'seats',
+                        extra: Transaction(
+                          title: movie.title,
+                          theaterName: selectedTheater,
+                          watchingTime: DateTime(
+                              selectedDate!.year,
+                              selectedDate!.month,
+                              selectedDate!.day,
+                              selectedTime!),
+                          transactionImage: movie.poster ?? movie.backdrop,
+                        ),
+                      ),
             ),
           ),
           verticalSpace(24),

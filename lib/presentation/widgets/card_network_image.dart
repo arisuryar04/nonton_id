@@ -10,6 +10,7 @@ class CardNetworkImage extends StatelessWidget {
   final double height;
   final double width;
   final BorderRadiusGeometry? borderRadius;
+  final BoxFit? fit;
 
   const CardNetworkImage(
     this.url, {
@@ -17,6 +18,7 @@ class CardNetworkImage extends StatelessWidget {
     required this.height,
     required this.width,
     this.borderRadius,
+    this.fit = BoxFit.cover,
   });
 
   @override
@@ -30,7 +32,7 @@ class CardNetworkImage extends StatelessWidget {
           borderRadius: borderRadius,
           image: DecorationImage(
             image: imageProvider,
-            fit: BoxFit.cover,
+            fit: fit,
           ),
         ),
       ),

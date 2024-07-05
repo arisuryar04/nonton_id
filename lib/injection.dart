@@ -32,6 +32,7 @@ void injection() {
     () => MovieBloc(locator(), locator(), locator(), locator(), locator(),
         locator(), locator()),
   );
+  locator.registerFactory(() => TransactionBloc(locator(), locator()));
 
   // Usecases
   locator.registerLazySingleton(() => GetLoggedUserUseCase(locator()));
@@ -54,6 +55,8 @@ void injection() {
   locator.registerLazySingleton(() => GetFavoriteMovieUseCase(locator()));
   locator.registerLazySingleton(() => RemoveFavoriteMovieUseCase(locator()));
   locator.registerLazySingleton(() => SaveFavoriteMovieUseCase(locator()));
+  locator.registerLazySingleton(() => CreateTransactionUseCase(locator()));
+  locator.registerLazySingleton(() => GetTransactionUserUseCase(locator()));
 
   // Repository
   locator.registerLazySingleton<AuthenticationRepository>(
@@ -62,6 +65,8 @@ void injection() {
       () => UserRepositoryImpl(locator()));
   locator.registerLazySingleton<MovieRepository>(
       () => MovieRepositoryImpl(locator(), locator()));
+  locator.registerLazySingleton<TransactionRepository>(
+      () => TransactionRepositoryImpl(locator()));
 
   // Datasource
   locator.registerLazySingleton<AuthenticationRemoteDataSource>(
@@ -72,6 +77,8 @@ void injection() {
       () => MovieRemoteDataSourceImpl(locator()));
   locator.registerLazySingleton<MovieLocalDataSource>(
       () => MovieLocalDataSourceImpl(locator()));
+  locator.registerLazySingleton<TransactionRemoteDataSource>(
+      () => TransactionRemoteDataSourceImpl(locator()));
 
   // External
   locator.registerLazySingleton(() => firebaseAuth);

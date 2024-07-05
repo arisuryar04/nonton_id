@@ -25,14 +25,15 @@ class FavoriteMoviePage extends StatelessWidget {
             ),
           );
         }
-        return Padding(
-          padding: EdgeInsets.only(
-            top: context.paddingAppBar + 12,
-            left: 16,
-            right: 16,
-          ),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
+        return SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Padding(
+            padding: EdgeInsets.only(
+              top: context.paddingAppBar + 12,
+              left: 16,
+              right: 16,
+              bottom: 110,
+            ),
             child: Wrap(
               spacing: 9,
               runSpacing: 16,
