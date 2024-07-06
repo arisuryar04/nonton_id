@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nonton_id/core/extension/context_ext.dart';
-import 'package:nonton_id/core/extension/string_ext.dart';
-import 'package:nonton_id/presentation/bloc/bloc.dart';
-import 'package:nonton_id/presentation/widgets/widgets.dart';
 
 import '../../../core/constant/color.dart';
+import '../../widgets/widgets.dart';
+import 'components/components.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -40,25 +38,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 textInputAction: TextInputAction.done,
               ),
               verticalSpace(60),
-              BlocConsumer<ForgotPasswordBloc, ForgotPasswordState>(
-                listener: (context, state) {
-                  if (state.status == StatusForgotPassword.success) {
-                    context.showSnackbar(state.message ?? '');
-                    context.pop();
-                  } else if (state.status == StatusForgotPassword.failed) {
-                    context.showSnackbar(state.message ?? '');
-                  }
-                },
-                builder: (context, state) {
-                  return ButtonCustom(
-                    title: state.status == StatusForgotPassword.loading
-                        ? 'Loading...'
-                        : 'Kirim',
-                    onPressed: state.status == StatusForgotPassword.loading
-                        ? null
-                        : () => _forgotPassword(),
-                  );
-                },
+              buttonSend(
+                email: _emailController,
               ),
               verticalSpace(40),
               Wrap(
@@ -86,17 +67,5 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         ),
       ),
     );
-  }
-
-  _forgotPassword() {
-    if (_emailController.text.isEmpty ||
-        !_emailController.text.isValidEmail()) {
-      context.showSnackbar('Email tidak valid');
-    } else {
-      FocusManager.instance.primaryFocus?.unfocus();
-      context
-          .read<ForgotPasswordBloc>()
-          .add(OnForgotPassword(_emailController.text));
-    }
   }
 }

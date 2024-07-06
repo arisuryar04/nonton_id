@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constant/color.dart';
-import '../../../core/extension/context_ext.dart';
 import '../../bloc/bloc.dart';
 import '../../widgets/widgets.dart';
+import 'components/components.dart';
 
 class ChangePasswordPage extends StatefulWidget {
   const ChangePasswordPage({super.key});
@@ -16,21 +16,6 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   late final _emailController = TextEditingController();
   final _oldPasswordController = TextEditingController();
   final _newPasswordController = TextEditingController();
-
-  _changePassword() {
-    FocusManager.instance.primaryFocus?.unfocus();
-    if (_oldPasswordController.text.isNotEmpty ||
-        _oldPasswordController.text != '' &&
-            _newPasswordController.text.isNotEmpty ||
-        _newPasswordController.text != '') {
-      context.read<UserBloc>().add(OnChangePassword(_newPasswordController.text,
-          _emailController.text, _oldPasswordController.text));
-    } else {
-      context.showSnackbar(
-        'Sandi sebelumnya dan sandi baru wajib diisi',
-      );
-    }
-  }
 
   @override
   void initState() {
@@ -78,27 +63,10 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               isEnabled: true,
             ),
             verticalSpace(48),
-            BlocConsumer<UserBloc, UserState>(
-              listener: (context, state) {
-                if (state.status == StatusUser.success) {
-                  _oldPasswordController.clear();
-                  _newPasswordController.clear();
-                  context.showSnackbar(state.message ?? '');
-                } else if (state.status == StatusUser.failed) {
-                  context.showSnackbar(state.message ?? '');
-                }
-              },
-              builder: (context, state) {
-                return ButtonCustom(
-                  title: state.status == StatusUser.loading
-                      ? 'Loading...'
-                      : 'Ubah Sandi',
-                  width: context.fullWidth - 48,
-                  onPressed: state.status == StatusUser.loading
-                      ? null
-                      : () => _changePassword(),
-                );
-              },
+            buttonChangePassword(
+              email: _emailController,
+              newPassword: _newPasswordController,
+              oldPassword: _oldPasswordController,
             ),
           ],
         ),

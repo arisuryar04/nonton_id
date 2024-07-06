@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../bloc/bloc.dart';
 import '../../widgets/space.dart';
-import 'methods/app_bar_movie.dart';
-import 'methods/movie_list.dart';
-import 'methods/promotions.dart';
-import 'methods/search_movie.dart';
+import 'components/components.dart';
 
 class MoviePage extends StatelessWidget {
   const MoviePage({super.key});

@@ -1,16 +1,12 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 import '../../../core/constant/assets.dart';
 import '../../../core/constant/color.dart';
-import '../../../core/extension/context_ext.dart';
-import '../../../domain/entities/user.dart';
 import '../../bloc/bloc.dart';
 import '../../widgets/widgets.dart';
-import 'methods/avatar_update_profile.dart';
+import 'components/components.dart';
 
 class UpdateProfilePage extends StatefulWidget {
   const UpdateProfilePage({super.key});
@@ -80,55 +76,12 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
               label: 'Di buat',
             ),
             verticalSpace(50),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: BlocConsumer<UserBloc, UserState>(
-                listener: (context, state) {
-                  if (state.status == StatusUser.success) {
-                    setState(() {
-                      _imagePicker = null;
-                    });
-                    context.showSnackbar('Berhasil di perbarui');
-                  } else if (state.status == StatusUser.failed) {
-                    context.showSnackbar(state.message ?? '');
-                  }
-                },
-                builder: (context, state) {
-                  final user = state.user;
-                  return ButtonCustom(
-                    title: state.status == StatusUser.loading
-                        ? 'Tunggu...'
-                        : 'Perbarui',
-                    onPressed: state.status == StatusUser.loading
-                        ? null
-                        : () {
-                            FocusManager.instance.primaryFocus?.unfocus();
-                            if (_nameController.text != state.user?.name &&
-                                RegExp(r"\s").hasMatch(_nameController.text)) {
-                              context.read<UserBloc>().add(
-                                    OnUpdateProfileUser(User(
-                                        uid: user?.uid,
-                                        balance: user?.balance,
-                                        createdAt: user?.createdAt,
-                                        email: user?.email,
-                                        name: _nameController.text,
-                                        photoUrl: user?.photoUrl)),
-                                  );
-                            } else if (_imagePicker != null) {
-                              context.read<UserBloc>().add(
-                                    OnUploadProfilePicture(
-                                      state.user!.uid!,
-                                      File(_imagePicker!.path),
-                                      _nameController.text,
-                                    ),
-                                  );
-                            } else {
-                              context.showSnackbar('Tidak ada yang di update');
-                            }
-                          },
-                  );
-                },
-              ),
+            buttonUpdate(
+              name: _nameController.text,
+              imagePicker: _imagePicker,
+              resetImagePicker: () => setState(() {
+                _imagePicker = null;
+              }),
             ),
             verticalSpace(25),
           ],

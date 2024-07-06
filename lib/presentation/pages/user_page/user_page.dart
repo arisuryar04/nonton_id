@@ -4,9 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/constant/color.dart';
 import '../../../core/extension/context_ext.dart';
 import '../../widgets/widgets.dart';
-import 'methods/button_logout.dart';
-import 'methods/info_item_user.dart';
-import 'methods/profile.dart';
+import 'components/components.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({super.key});

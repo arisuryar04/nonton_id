@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:nonton_id/core/extension/int_ext.dart';
 
 import '../../../../core/constant/assets.dart';
 import '../../../../core/constant/color.dart';
 import '../../../../core/extension/context_ext.dart';
+import '../../../../core/extension/int_ext.dart';
 import '../../../../domain/entities/user.dart';
 import '../../../bloc/bloc.dart';
 

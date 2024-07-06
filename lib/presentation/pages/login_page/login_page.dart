@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/constant/color.dart';
-import '../../../core/extension/context_ext.dart';
-import '../../../core/extension/string_ext.dart';
-import '../../bloc/bloc.dart';
 import '../../widgets/widgets.dart';
+import 'components/button_login.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -62,77 +60,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               verticalSpace(60),
-              BlocConsumer<LoginBloc, LoginState>(
-                listener: (context, state) {
-                  if (state.status == StatusLogin.success) {
-                    // Jika status success maka ke Home Page
-                    context.pushReplacementNamed('home');
-                  } else if (state.status == StatusLogin.failed) {
-                    if (state.message == 'Anda belum verifikasi email') {
-                      /* 
-                        Jika User sudah terdapat tapi belum melakukan verifikasi email
-                        maka akan show dialog untuk mengirimkan ulang verifikasi email
-                      */
-                      context.showDialogVerification(
-                        title: 'Verification Email',
-                        content:
-                            'Anda belum melakukan verifikasi email, apakah anda ingin dikirimkan ulang email verifikasi ?',
-                        onConfirm: BlocListener<SendVerificationEmailBloc,
-                            SendVerificationEmailState>(
-                          listener: (context, state) {
-                            if (state.status ==
-                                StatusSendVerification.success) {
-                              context.pop();
-                              context.showSnackbar(state.message ?? '');
-                            } else if (state.status ==
-                                StatusSendVerification.failed) {
-                              context.pop();
-                              context.showSnackbar(state.message ?? '');
-                            }
-                          },
-                          child: GestureDetector(
-                            onTap: () => context
-                                .read<SendVerificationEmailBloc>()
-                                .add(OnSendVerificationEmail()),
-                            child: const Text(
-                              'Ya',
-                              style: TextStyle(
-                                color: primary,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ),
-                        onCancel: GestureDetector(
-                          onTap: () => context.pop(),
-                          child: const Text(
-                            'Tidak',
-                            style: TextStyle(
-                              color: primary,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                      );
-                    } else {
-                      /*
-                        Terjadi kesalahan seperti email password salah
-                        atau user tidak terdaftar
-                      */
-                      context.showSnackbar(state.message ?? '');
-                    }
-                  }
-                },
-                builder: (context, state) {
-                  return ButtonCustom(
-                    title: state.status == StatusLogin.loading
-                        ? 'Loading...'
-                        : 'Masuk',
-                    onPressed: state.status == StatusLogin.loading
-                        ? null
-                        : () => _login(), // Function _login terdapat di bawah
-                  );
-                },
+              buttonLogin(
+                email: _emailController.text,
+                password: _passwordController.text,
               ),
               verticalSpace(40),
               Wrap(
@@ -160,21 +90,5 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
-  }
-
-  _login() {
-    if (_emailController.text.isEmpty ||
-        !_emailController.text.isValidEmail()) {
-      context.showSnackbar('Email tidak valid');
-    } else if (RegExp(r"\s").hasMatch(_passwordController.text) ||
-        _passwordController.text.isEmpty) {
-      context.showSnackbar('Password tidak valid');
-    } else if (_passwordController.text.length < 7) {
-      context.showSnackbar('Password kurang dari 7');
-    } else {
-      FocusManager.instance.primaryFocus?.unfocus();
-      context.read<LoginBloc>().add(OnLogin(
-          email: _emailController.text, password: _passwordController.text));
-    }
   }
 }

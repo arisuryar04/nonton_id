@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nonton_id/presentation/bloc/bloc.dart';
 
 import '../../../../core/constant/color.dart';
 import '../../../../core/constant/config.dart';
-import '../../../../domain/entities/movie.dart';
-import '../../../widgets/card_network_image.dart';
-import '../../../widgets/space.dart';
+import '../../../../domain/entities/entities.dart';
+import '../../../bloc/bloc.dart';
+import '../../../widgets/widgets.dart';
 
 Widget movieList(
   BuildContext context, {

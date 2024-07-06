@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/constant/assets.dart';
 import '../../bloc/bloc.dart';
 import '../../widgets/navbar_custom.dart';
-import '../favorite_movie_page/favorite_movie_page.dart';
-import '../movie_page/movie_page.dart';
-import '../ticket_page/ticket_page.dart';
-import '../user_page/user_page.dart';
+import '../pages.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

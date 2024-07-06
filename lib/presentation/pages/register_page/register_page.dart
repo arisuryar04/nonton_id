@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/constant/color.dart';
-import '../../../core/extension/context_ext.dart';
-import '../../../core/extension/string_ext.dart';
-import '../../bloc/bloc.dart';
 import '../../widgets/widgets.dart';
+import 'components/components.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -63,34 +61,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 textInputAction: TextInputAction.done,
               ),
               verticalSpace(60),
-              BlocConsumer<RegisterBloc, RegisterState>(
-                listener: (context, state) {
-                  if (state.status == StatusRegister.success) {
-                    /*
-                      Jika akun berhasil terdaftar dan show snackbar
-                      untuk melakukan verifikasi email
-                    */
-                    context.showSnackbar(state.message ?? '');
-                    _clearTextEditing(); // Function _clearTextEditing terdapat dibawah
-                    context.pop();
-                  } else if (state.status == StatusRegister.failed) {
-                    /*
-                      Jika gagal untuk mendaftar
-                    */
-                    context.showSnackbar(state.message ?? '');
-                  }
-                },
-                builder: (context, state) {
-                  return ButtonCustom(
-                    title: state.status == StatusRegister.loading
-                        ? 'Loading...'
-                        : 'Daftar',
-                    onPressed: state.status == StatusRegister.loading
-                        ? null
-                        : () =>
-                            _register(), // Function _register() terdapat dibawah
-                  );
-                },
+              buttonRegister(
+                name: _nameController,
+                email: _emailController,
+                password: _passwordController,
+                confirmPassword: _confirmPasswordController,
               ),
               verticalSpace(40),
               Wrap(
@@ -118,40 +93,5 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ),
     );
-  }
-
-  // Clear semua text editing controller
-  _clearTextEditing() {
-    _nameController.clear();
-    _emailController.clear();
-    _passwordController.clear();
-    _confirmPasswordController.clear();
-  }
-
-  _register() {
-    if (RegExp(r"\s").hasMatch(_nameController.text) ||
-        _nameController.text.isEmpty) {
-      context.showSnackbar('Nama tidak boleh kosong');
-    } else if (_emailController.text.isEmpty ||
-        !_emailController.text.isValidEmail()) {
-      context.showSnackbar('Email tidak valid');
-    } else if (RegExp(r"\s").hasMatch(_passwordController.text) ||
-        _passwordController.text.isEmpty) {
-      context.showSnackbar('Password tidak valid');
-    } else if (_passwordController.text.length < 7) {
-      context.showSnackbar('Password kurang dari 7');
-    } else if (_confirmPasswordController.text != _passwordController.text) {
-      context.showSnackbar('Konfirmasi password tidak sesuai');
-    } else {
-      FocusManager.instance.primaryFocus?.unfocus();
-      context.read<RegisterBloc>().add(OnRegister(
-            email: _emailController.text,
-            password: _passwordController.text,
-            name: _nameController.text,
-            balance: 0,
-            createdAt: DateTime.now(),
-            photoUrl: null,
-          ));
-    }
   }
 }
